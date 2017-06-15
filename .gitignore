@@ -1,5 +1,14 @@
 # Created by https://www.gitignore.io
 
+.Python
+bin/
+include/
+lib/
+pip-selfcheck.json
+*.py[cod]
+*.DS_Store
+
+
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -34,7 +43,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-bin/
+env/
 build/
 develop-eggs/
 dist/
