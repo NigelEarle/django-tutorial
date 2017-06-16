@@ -1,8 +1,11 @@
+{% load staticfiles%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>{% block head_title %}Blog Django{% endblock head_title %}</title>
+  <link rel="stylesheet" href="{% static '/css/base.css' %}">
 </head>
 <body>
 
