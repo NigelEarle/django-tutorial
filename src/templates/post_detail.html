@@ -9,7 +9,20 @@
   {% endif %}
   <h1>{{ title }} <small>{{instance.timestamp}}</small></h1>
   {{instance.content|linebreaks}}<br/>
-</div>
 
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+  Facebook
+  </a>
+
+  <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}">
+  Twitter
+  </a>
+
+  <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://swiftforentrepreneurs.com/&title={{ instance.title}}&summary={{ share_string }}&source={{ request.build_absolute_uri }}">
+  Linkedin
+  </a>
+</div>
 
 {% endblock content %}
