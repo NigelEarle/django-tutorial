@@ -9,6 +9,11 @@
    <img src="{{ instance.image.url }}" class="img-responsive" alt="image">
   {% endif %}
   <h1>{{ title }} <small>{{instance.timestamp}}</small></h1>
+
+  {% if instance.user.get_full_name %}
+    <p>Author: {{ instance.user.get_full_name }}</p>
+  {% endif %}
+
   
   {{ instance.content|truncatechars:80|urlify }} <br/>
 
