@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-
+from django.contrib import messages
 # Create your views here.
 from .forms import PostForm
 from .models import Post
@@ -12,12 +12,8 @@ def post_create(request):
     instance = form.save(commit=False)
     print form.cleaned_data.get("title")
     instance.save()
+    messages.success(request, "Successfully Created")
     return HttpResponseRedirect(instance.get_absolute_url())
-
-  # if request.method == "POST":
-  #   print request.POST.get("title")
-  #   print request.POST.get("content")
-
 
   context = {
     "form" : form,
@@ -60,8 +56,9 @@ def post_update(request, id=None):
     instance = form.save(commit=False)
     print form.cleaned_data.get("title")
     instance.save()
+    messages.success(request, "Item Updated", extra_tags="some-tag")
     return HttpResponseRedirect(instance.get_absolute_url())
-    
+
   context = {
     "instance": instance,
     "form": form,
