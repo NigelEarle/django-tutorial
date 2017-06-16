@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Blog</title>
-</head>
-<body>
-  {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-  {% endif %}
-  <h1>{{ instance.title }} is working</h1>
-  {{instance.id}}<br/>
-  {{instance.title}}<br/>
-  {{instance.content}}<br/>
-  {{instance.timestamp}}<br/>
-  {{instance.updated}}<br/>
-</body>
-</html>
+{% extends "base.html" %}
+
+<title>{% block head_title %}{{ instance.title}} | {{block.super}}{% endblock head_title %}</title>
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+{{instance.id}}<br/>
+{{instance.title}}<br/>
+{{instance.content}}<br/>
+{{instance.timestamp}}<br/>
+{{instance.updated}}<br/>
+
+{% endblock content %}

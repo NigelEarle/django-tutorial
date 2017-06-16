@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <h1>{{ title }} is working</h1>
+  <p>Parent Page</p>
+  {% for obj in object_list %}
+  {{ obj.id }}<br/>
+  <a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a><br/>
+  {{ obj.content }}<br/>
+  {{ obj.updated }}<br/>
+  {{ obj.timestamp }}<br/>
+  <hr/>
+  {% endfor %}
+{% endblock content %}
