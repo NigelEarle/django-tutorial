@@ -5,8 +5,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.utils import timezone
-# Create your views here.
-from .forms import PostForm
+from django.db.models import Q
+# Create your views herefrom .forms import PostForm
 from .models import Post
 
 def post_create(request):
@@ -49,7 +49,16 @@ def post_list(request):
   if request.user.is_staff or request.user.is_superuser:
     queryset_list = Post.objects.all()
 
-  paginator = Paginator(queryset_list, 3) # Show 25 contacts per page
+  query = request.GET.get("q")
+  if query:
+    queryset_list = queryset_list.filter(
+      Q(title__icontains=query) |
+      Q(content__icontains=query) |
+      Q(user__first_name__icontains=query) |
+      Q(user__last_name__icontains=query)
+    ).distinct()
+
+  paginator = Paginator(queryset_list, 2) # Show 25 contacts per page
   page_request_var = "blah"
   page = request.GET.get(page_request_var)
   try:
