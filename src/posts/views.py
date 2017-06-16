@@ -84,7 +84,6 @@ def post_update(request, id=None):
     "title" : "Detail"
   }
   return render(request, "post_form.html", context)
-  # return HttpResponse("<h1>Update</h1>")
 
 def post_delete(request, id=None):
   if not request.user.is_staff or not request.user.is_superuser:
